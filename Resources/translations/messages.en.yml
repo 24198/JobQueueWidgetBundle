@@ -1,7 +1,7 @@
 tfone:
     dashboard:
         job_queue_widget:
-            title: System jobs
+            title: Latest jobs in queue
             view_all: View All
             description: See current system jobs for the Job Queue
     

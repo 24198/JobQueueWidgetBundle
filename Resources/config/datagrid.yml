@@ -25,12 +25,15 @@ datagrid:
         columns:
             channelName:
                 label: tfone.dashboard.datagrid.channelName
+                type: twig
+                template: TfoneJobQueueWidgetBundle:Datagrid:Column/channelName.html.twig
+                frontend_type: html
             channelType:
                 label: tfone.dashboard.datagrid.channelType
             state:
                 label: tfone.dashboard.datagrid.status
                 type: twig
-                template: TfoneJobQueueWidgetBundle:Job:Datagrid/status.html.twig
+                template: TfoneJobQueueWidgetBundle:Datagrid:Column/status.html.twig
                 frontend_type: html
             createdAt:
                 label: oro.cron.header.created
