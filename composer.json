@@ -1,0 +1,23 @@
+{
+    "name": "tfone/jobqueue-widget",
+    "description": "Oro(CRM) dashboard widget for displaying the job queue",
+    "homepage": "https://github.com/24198/JobQueueWidgetBundle.git",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "[24198] J. Casteleijn",
+            "homepage": "https://github.com/24198/"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Tfone\\Bundle\\JobQueueWidgetBundle": "src/"
+        }
+    },
+    "target-dir": "src/Tfone/Bundle/JobQueueWidgetBundle",
+    "require": {
+        "php": ">=5.4.4",
+        "oro/platform": "1.*"
+    },
+    "minimum-stability": "stable"
+}
