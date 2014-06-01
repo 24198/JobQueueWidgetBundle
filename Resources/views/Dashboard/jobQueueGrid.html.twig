@@ -1,0 +1,16 @@
+{% extends 'OroDashboardBundle:Dashboard:widget.html.twig' %}
+{% import 'OroDataGridBundle::macros.html.twig' as dataGrid %}
+
+{% block content %}
+    {{ dataGrid.renderGrid('jobs-grid-dashboard') }}
+{% endblock %}
+
+{% block actions %}
+    {% set actions = [{
+        'url': path('oro_cron_job_index'),
+        'type': 'link',
+        'label': 'tfone.dashboard.job_queue_widget.view_all'|trans
+    }] %}
+
+    {{ parent() }}
+{% endblock %}

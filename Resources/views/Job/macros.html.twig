@@ -1,0 +1,21 @@
+{% macro status(jobStatus) -%}
+    {% if jobStatus == "new" -%}
+        <span class="label">New</span>
+    {%- elseif jobStatus == "pending" -%}
+        <span class="label">Pending</span>
+    {%- elseif jobStatus == "running" -%}
+        <span class="label label-info">Running</span>
+    {%- elseif jobStatus ==  "canceled" -%}
+        <span class="label label-inverse">Canceled</span>
+    {%- elseif jobStatus == "terminated" -%}
+        <span class="label label-important">Terminated</span>
+    {%- elseif jobStatus == "failed" -%}
+        <span class="label label-important">Failed</span>
+    {%- elseif jobStatus == "incomplete" -%}
+        <span class="label label-important">Incomplete</span>
+    {%- elseif jobStatus == "finished" -%}
+        <span class="label label-success">Finished</span>
+    {%- else -%}
+        <span class="label label-warning">Unknown</span>
+    {%- endif %}
+{%- endmacro %}

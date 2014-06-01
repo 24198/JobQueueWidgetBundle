@@ -1,0 +1,12 @@
+tfone:
+    dashboard:
+        job_queue_widget:
+            title: System jobs
+            view_all: View All
+            description: See current system jobs for the Job Queue
+    
+        datagrid:
+            status: Status
+            channelName: Channel
+            channelType: Type
+            

@@ -1,0 +1,9 @@
+oro_dashboard_config:
+    widgets:
+        tfone_job_queue_widget:
+            label:      tfone.dashboard.job_queue_widget.title
+            route:      oro_dashboard_widget
+            route_parameters: { bundle: TfoneJobQueueWidgetBundle, name: jobQueueGrid }
+            acl:        oro_jobs
+            description: tfone.dashboard.job_queue_widget.description
+            icon:   bundles/tfonejobqueuewidget/img/system_jobs.png

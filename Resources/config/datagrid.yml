@@ -1,0 +1,50 @@
+datagrid:
+    jobs-grid-dashboard:
+        source:
+            type: orm
+            acl_resource: oro_jobs
+            query:
+                select:
+                    - partial j.{id, args, state, createdAt}
+                    - channel.name as channelName
+                    - channel.type as channelType
+                from:
+                    - { table: JMSJobQueueBundle:Job , alias: j }
+                join:
+                    inner:
+                        -
+                            join: Oro\Bundle\IntegrationBundle\Entity\Channel
+                            alias: channel
+                            conditionType: WITH
+                            condition: "substring(j.args, 16,1) = channel.id"
+                where:
+                    and:
+                        - j.originalJob IS NULL
+            hints:
+                - HINT_FORCE_PARTIAL_LOAD
+        columns:
+            channelName:
+                label: tfone.dashboard.datagrid.channelName
+            channelType:
+                label: tfone.dashboard.datagrid.channelType
+            state:
+                label: tfone.dashboard.datagrid.status
+                type: twig
+                template: TfoneJobQueueWidgetBundle:Job:Datagrid/status.html.twig
+                frontend_type: html
+            createdAt:
+                label: oro.cron.header.created
+                frontend_type: datetime
+        sorters:
+            columns:
+                state:               { data_name: j.state }
+                createdAt:           { data_name: j.createdAt }
+            default:
+                createdAt: DESC
+        options:
+            toolbarOptions:
+                hide: true
+                pageSize:
+                    items: [10]
+                    default_per_page: 10
+            entityHint: job

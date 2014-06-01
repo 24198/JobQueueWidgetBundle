@@ -1,0 +1,2 @@
+bundles:
+    - { name: Tfone\Bundle\JobQueueWidgetBundle\TfoneJobQueueWidgetBundle, priority: 110 }
