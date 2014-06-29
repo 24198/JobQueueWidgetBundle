@@ -5,7 +5,10 @@ datagrid:
             acl_resource: oro_jobs
             query:
                 select:
-                    - partial j.{id, args, state, createdAt}
+                    - j.id 
+                    - j.args 
+                    - j.state
+                    - j.createdAt
                     - channel.name as channelName
                     - channel.type as channelType
                 from:
@@ -20,8 +23,6 @@ datagrid:
                 where:
                     and:
                         - j.originalJob IS NULL
-            hints:
-                - HINT_FORCE_PARTIAL_LOAD
         columns:
             channelName:
                 label: tfone.dashboard.datagrid.channelName

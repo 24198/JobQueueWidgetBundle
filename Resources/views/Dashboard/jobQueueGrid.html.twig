@@ -1,8 +1,10 @@
 {% extends 'OroDashboardBundle:Dashboard:widget.html.twig' %}
 {% import 'OroDataGridBundle::macros.html.twig' as dataGrid %}
 
+{% set gridName = 'jobs-grid-dashboard' %}
+
 {% block content %}
-    {{ dataGrid.renderGrid('jobs-grid-dashboard') }}
+    {{ dataGrid.renderGrid(gridName) }}
 {% endblock %}
 
 {% block actions %}
