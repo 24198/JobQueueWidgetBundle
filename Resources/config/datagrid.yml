@@ -5,45 +5,55 @@ datagrid:
             acl_resource: oro_jobs
             query:
                 select:
-                    - partial j.{id, args, state, createdAt}
-                    - channel.name as channelName
-                    - channel.type as channelType
+                    - j.id
+                    - j.state
+                    - j.command
+                    - j.createdAt
+                    - j.id as identifier
+                    ##j.id as identifier tmp solution for getting id of the job into the view
                 from:
                     - { table: JMSJobQueueBundle:Job , alias: j }
-                join:
-                    inner:
-                        -
-                            join: Oro\Bundle\IntegrationBundle\Entity\Channel
-                            alias: channel
-                            conditionType: WITH
-                            condition: "substring(j.args, 16,1) = channel.id"
                 where:
                     and:
                         - j.originalJob IS NULL
-            hints:
-                - HINT_FORCE_PARTIAL_LOAD
         columns:
-            channelName:
-                label: tfone.dashboard.datagrid.channelName
+            command:
+                label: tfone.dashboard.datagrid.command
                 type: twig
-                template: TfoneJobQueueWidgetBundle:Datagrid:Column/channelName.html.twig
+                template: TfoneJobQueueWidgetBundle:Datagrid:Column/command.html.twig
                 frontend_type: html
-            channelType:
-                label: tfone.dashboard.datagrid.channelType
             state:
-                label: tfone.dashboard.datagrid.status
+                label: tfone.dashboard.datagrid.state
                 type: twig
-                template: TfoneJobQueueWidgetBundle:Datagrid:Column/status.html.twig
+                template: TfoneJobQueueWidgetBundle:Datagrid:Column/state.html.twig
                 frontend_type: html
             createdAt:
-                label: oro.cron.header.created
+                label: tfone.dashboard.datagrid.created
                 frontend_type: datetime
+            identifier:
+                label: null   
+                type: twig
+                template: TfoneJobQueueWidgetBundle:Datagrid:Column/viewjob.html.twig
+                frontend_type: html
         sorters:
             columns:
                 state:               { data_name: j.state }
-                createdAt:           { data_name: j.createdAt }
             default:
-                createdAt: DESC
+                state: ASC
+        properties:
+            id: ~
+            view_link:
+                type:       url
+                route:      oro_cron_job_view
+                params:     [ id ]
+        actions:
+            view:
+                type:          navigate
+                acl_resource:  oro_cron_job_view
+                label:         View
+                icon:          eye-open
+                link:          view_link
+                rowAction:     true
         options:
             toolbarOptions:
                 hide: true

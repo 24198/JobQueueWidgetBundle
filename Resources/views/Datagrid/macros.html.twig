@@ -1,21 +1,25 @@
-{% macro status(jobStatus) -%}
-    {% if jobStatus == "new" -%}
+{% macro state(jobState) -%}
+    {% if jobState == "new" -%}
         <span class="label">New</span>
-    {%- elseif jobStatus == "pending" -%}
+    {%- elseif jobState == "pending" -%}
         <span class="label">Pending</span>
-    {%- elseif jobStatus == "running" -%}
+    {%- elseif jobState == "running" -%}
         <span class="label label-info">Running</span>
-    {%- elseif jobStatus ==  "canceled" -%}
+    {%- elseif jobState ==  "canceled" -%}
         <span class="label label-inverse">Canceled</span>
-    {%- elseif jobStatus == "terminated" -%}
+    {%- elseif jobState == "terminated" -%}
         <span class="label label-important">Terminated</span>
-    {%- elseif jobStatus == "failed" -%}
+    {%- elseif jobState == "failed" -%}
         <span class="label label-important">Failed</span>
-    {%- elseif jobStatus == "incomplete" -%}
+    {%- elseif jobState == "incomplete" -%}
         <span class="label label-important">Incomplete</span>
-    {%- elseif jobStatus == "finished" -%}
+    {%- elseif jobState == "finished" -%}
         <span class="label label-success">Finished</span>
     {%- else -%}
         <span class="label label-warning">Unknown</span>
     {%- endif %}
+{%- endmacro %}
+
+{% macro command(jobCommand) -%}
+    <code style="width:300px; overflow:hidden; white-space:nowrap;">{{ jobCommand }}</code>
 {%- endmacro %}

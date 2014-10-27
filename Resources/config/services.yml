@@ -1,7 +1,0 @@
-parameters:
-#    tfone_job_queue_widget.example.class: Tfone\Bundle\JobQueueWidgetBundle\Example
-
-services:
-#    tfone_job_queue_widget.example:
-#        class: %tfone_job_queue_widget.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

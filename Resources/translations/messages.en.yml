@@ -1,12 +1,13 @@
 tfone:
     dashboard:
         job_queue_widget:
-            title: Latest jobs in queue
-            view_all: View All
-            description: See current system jobs for the Job Queue
+            title:          Latest jobs in queue
+            view_all:       View All
+            description:    See current system jobs for the Job Queue
     
         datagrid:
-            status: Status
-            channelName: Channel
-            channelType: Type
+            state:          State
+            created:        Created At
+            command:        Command
+            view:           View
             
