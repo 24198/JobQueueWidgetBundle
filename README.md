@@ -28,7 +28,7 @@ git clone https://github.com/24198/JobQueueWidgetBundle.git
 after installing the Package or cloning this into your development environment
 you need to run the command 
 ```bash
-    php app/console app/console oro:assets:install
+    php app/console oro:assets:install
 ```
 
 this will install the appropriate images for displaying in the frontend.
